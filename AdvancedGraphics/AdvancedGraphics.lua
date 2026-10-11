@@ -113,8 +113,9 @@ Checkbox("Bloom", "bloomEnable",
     "A separate bloom switch, off by default. With Linear Lighting, bloom mostly comes from the menu's Bloom setting.")
 Slider("Shine", "specular", 0, 1, 0.05, Percent,
     "How strong shine and highlights on surfaces are.")
-Slider("Light Distance", "maxLightDist", 512, 4096, 256, Yards,
-    "How far away lights (torches, lamps, spell lights) are drawn.")
+Slider("Light Distance", "maxLightDist", 256, 2048, 128, Yards,
+    "How far away lights (torches, lamps, spell lights) are drawn. The game allows up to 2048, its default, so this "
+        .. "can only lower it (for performance).")
 
 ---------------------------------------------------------------------------
 -- Sharpening
