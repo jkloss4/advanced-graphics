@@ -83,7 +83,7 @@ Section("HDR", "HDROutput")
 Checkbox("HDR Output", "HDROutput",
     "Render in HDR. Needs Windows HDR turned on, a monitor that supports it, and Linear Lighting. If nothing changes, "
         .. "restart the game.")
-Slider("Highlight Strength", "HDRFactor", 1, 5, 0.25, Times,
+Slider("Highlight Strength", "HDRFactor", 1, 5, 0.05, Times,
     "How far above normal brightness highlights (sun, fire, spell effects) can go. It's capped at your monitor's peak "
         .. "brightness.", OnlyWith("HDROutput"))
 Checkbox("Set Peak Brightness", "useHDRPeakBrightness",
