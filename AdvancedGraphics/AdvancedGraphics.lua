@@ -143,9 +143,9 @@ Dropdown("Weather Density", "weatherDensity", {
     { label = "Medium", value = 2 },
     { label = "High", value = 3 },
 }, "How much rain and snow falls.")
-Slider("Object Detail Distance", "doodadLodScale", 50, 200, 10, function(v) return v .. "%" end,
+Slider("Object Detail Distance", "doodadLodScale", 50, 200, 5, function(v) return v .. "%" end,
     "How far out objects (trees, rocks, props) keep full detail before switching to simpler models.")
-Slider("Object Fade Distance", "lodObjectFadeScale", 50, 200, 10, function(v) return v .. "%" end,
+Slider("Object Fade Distance", "lodObjectFadeScale", 50, 200, 5, function(v) return v .. "%" end,
     "How far out small objects fade out.")
 Checkbox("Footprints", "showfootprintparticles", "Footprint effects as you walk.")
 Checkbox("Soft Edges", "DepthBasedOpacity",
@@ -166,7 +166,7 @@ Section("Performance", "DynamicRenderScale")
 Checkbox("Dynamic Render Scale", "DynamicRenderScale",
     "Lower the resolution automatically when your graphics card can't keep up with the target frame rate. Blizzard "
         .. "marks it as a beta feature.")
-Slider("Lowest Render Scale", "DynamicRenderScaleMin", 0.33, 1, 0.01, Percent,
+Slider("Lowest Render Scale", "DynamicRenderScaleMin", 0.35, 1, 0.05, Percent,
     "The lowest resolution it can drop to, as a share of full resolution.", OnlyWith("DynamicRenderScale"))
 
 Kit.Register(page)
