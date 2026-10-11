@@ -135,7 +135,7 @@ Checkbox("Crisper CMAA2", "CMAA2ExtraSharpness",
 Section("World Detail", "groundEffectDensity", "weatherDensity", "doodadLodScale")
 Slider("Ground Clutter Density", "groundEffectDensity", 16, 256, 8, Plain,
     "How thick grass and small ground clutter are. The menu's Ground Clutter setting changes this too.")
-Slider("Ground Clutter Distance", "groundEffectDist", 40, 400, 10, Yards,
+Slider("Ground Clutter Distance", "groundEffectDist", 40, 400, 5, Yards,
     "How far out grass and ground clutter are drawn.")
 Dropdown("Weather Density", "weatherDensity", {
     { label = "Off", value = 0 },
