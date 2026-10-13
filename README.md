@@ -12,8 +12,7 @@ the HDR section and Linear Lighting / Bloom are WoW: Forever only.
 - **Lighting**: Linear Lighting and Bloom (WoW: Forever), surface shine, light draw distance.
 - **Sharpening**: sharpen even without FSR upscaling, sharpness amount, crisper CMAA2 anti-aliasing.
 - **World Detail**: ground clutter density, distance and fade, weather density, cloud detail, object detail and fade
-  distance,
-  footprints, soft edges.
+  distance, footprints, soft edges.
 - **Distance & Detail**: how far terrain, buildings and characters keep full detail, where the distant landscape
   begins, small-object culling, and full-quality (uncompressed) character textures.
 - **Screen Effects**: full-screen glow, the gray death effect, the nether effect.
