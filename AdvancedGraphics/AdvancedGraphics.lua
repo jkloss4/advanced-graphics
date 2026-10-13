@@ -182,7 +182,7 @@ Checkbox("Soft Edges", "DepthBasedOpacity",
 ---------------------------------------------------------------------------
 Section("Distance & Detail", "terrainLodDist", "wmoLodDist", "entityLodDist", "horizonStart", "lodObjectCullSize",
     "componentCompress")
-Slider("Terrain Detail Distance", "terrainLodDist", 200, 2000, 50, Yards,
+Slider("Terrain Detail Distance", "terrainLodDist", 200, 5248, 8, Yards,
     "How far out the ground keeps full detail before switching to a simpler version.")
 Slider("Building Detail Distance", "wmoLodDist", 100, 2000, 50, Yards,
     "How far out buildings keep full detail before switching to simpler models.")
@@ -190,9 +190,9 @@ Slider("Character Detail Distance", "entityLodDist", 5, 1000, 5, Yards,
     "How far out characters and creatures keep full detail before switching to simpler models.")
 Slider("Distant Landscape Start", "horizonStart", 400, 24000, 200, Yards,
     "Where the low-detail distant landscape begins. Further out keeps more of the view at full detail.")
-Slider("Small Object Culling", "lodObjectCullSize", 1, 30, 1, Plain,
+Slider("Small Object Culling", "lodObjectCullSize", 1, 100, 1, Plain,
     "How small an object can be before it's left out in the distance. Lower keeps more small objects.")
-Slider("Small Object Keep Distance", "lodObjectCullDist", 30, 300, 5, Yards,
+Slider("Small Object Keep Distance", "lodObjectCullDist", 30, 200, 5, Yards,
     "Within this distance small objects are always drawn, however small (Small Object Culling only drops them past "
         .. "it). Further keeps more small props and debris in the middle distance.")
 Slider("Smallest Object Size", "lodObjectMinSize", 0, 40, 1, Plain,
