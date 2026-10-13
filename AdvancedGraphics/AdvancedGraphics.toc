@@ -1,4 +1,4 @@
-## Interface: 120100, 16001
+## Interface: 120100, 120105, 16001
 ## Title: Advanced Graphics
 ## Notes: Graphics settings that are not in the game's options menus: HDR, sharpening, clutter, screen effects and more.
 ## Version: 1.0.0
