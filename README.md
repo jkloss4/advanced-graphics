@@ -14,7 +14,7 @@ the HDR section and Linear Lighting / Bloom are WoW: Forever only.
 - **World Detail**: ground clutter density, distance and fade, weather density, cloud detail, object detail and fade
   distance, footprints, soft edges.
 - **Distance & Detail**: how far terrain, buildings and characters keep full detail, where the distant landscape
-  begins, small-object culling, and full-quality (uncompressed) character textures.
+  begins, small-object culling and keep distance, and full-quality (uncompressed) character textures.
 - **Screen Effects**: full-screen glow, the gray death effect, the nether effect.
 
 Each control reads and sets the game's own setting (console variable), so the game saves it in its config; the addon

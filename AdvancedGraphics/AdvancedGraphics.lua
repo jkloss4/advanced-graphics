@@ -192,6 +192,9 @@ Slider("Distant Landscape Start", "horizonStart", 400, 24000, 200, Yards,
     "Where the low-detail distant landscape begins. Further out keeps more of the view at full detail.")
 Slider("Small Object Culling", "lodObjectCullSize", 1, 30, 1, Plain,
     "How small an object can be before it's left out in the distance. Lower keeps more small objects.")
+Slider("Small Object Keep Distance", "lodObjectCullDist", 30, 300, 5, Yards,
+    "Within this distance small objects are always drawn, however small (Small Object Culling only drops them past "
+        .. "it). Further keeps more small props and debris in the middle distance.")
 Slider("Smallest Object Size", "lodObjectMinSize", 0, 40, 1, Plain,
     "Objects smaller than this are never drawn far away. 0 draws them all.")
 -- On is the setting at 0 (uncompressed), so the box is the opposite of the setting
