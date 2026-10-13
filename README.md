@@ -14,7 +14,6 @@ the HDR section and Linear Lighting / Bloom are WoW: Forever only.
 - **World Detail**: ground clutter density and distance, weather density, object detail and fade distance,
   footprints, soft edges.
 - **Screen Effects**: full-screen glow, the gray death effect, the nether effect.
-- **Performance**: dynamic render scale and its lowest scale.
 
 Each control reads and sets the game's own setting (console variable), so the game saves it in its config; the addon
 saves nothing. **Defaults** puts every setting on the page back to the game's default. Some of these (clutter,

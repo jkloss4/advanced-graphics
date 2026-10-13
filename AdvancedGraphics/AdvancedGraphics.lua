@@ -168,16 +168,6 @@ Checkbox("Full-Screen Glow", "ffxGlow", "The soft glow over the whole screen.")
 Checkbox("Death Effect", "ffxDeath", "The screen turns gray while you're dead.")
 Checkbox("Nether Effect", "ffxNether", "The full-screen nether effect some abilities and places use.")
 
----------------------------------------------------------------------------
--- Performance
----------------------------------------------------------------------------
-Section("Performance", "DynamicRenderScale")
-Checkbox("Dynamic Render Scale", "DynamicRenderScale",
-    "Lower the resolution automatically when your graphics card can't keep up with the target frame rate. Blizzard "
-        .. "marks it as a beta feature.")
-Slider("Lowest Render Scale", "DynamicRenderScaleMin", 0.35, 1, 0.05, Percent,
-    "The lowest resolution it can drop to, as a share of full resolution.", OnlyWith("DynamicRenderScale"))
-
 Kit.Register(page)
 
 -- The game or another addon can change these: keep the page showing the current values
