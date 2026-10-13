@@ -124,8 +124,17 @@ Section("Sharpening", "ResampleAlwaysSharpen", "CMAA2ExtraSharpness")
 Checkbox("Always Sharpen", "ResampleAlwaysSharpen",
     "Apply the sharpening pass even when the game isn't upscaling. The menu's Sharpness setting normally only works "
         .. "with FSR upscaling.")
-Slider("Sharpness", "ResampleSharpness", 0, 1, 0.05, Percent,
-    "How much sharpening is applied (the same setting as the menu's Sharpness).", OnlyWith("ResampleAlwaysSharpen"))
+-- Laid out like the menu's Sharpness slider: 2.0 on the left to 0.0 on the right in steps of 0.1 (lower is sharper),
+-- so the slider runs over 2 minus the setting
+if Exists("ResampleSharpness") then
+    used.ResampleSharpness = true
+    page:Slider("Sharpness", 0, 2, 0.1,
+        function() return 2 - GetNumber("ResampleSharpness") end,
+        function(value) SetNumber("ResampleSharpness", math.floor((2 - value) * 10 + 0.5) / 10) end,
+        function(value) return ("%.1f"):format(2 - value) end,
+        "How much sharpening is applied, the same setting and layout as the menu's Sharpness: further right is "
+            .. "sharper.", OnlyWith("ResampleAlwaysSharpen"))
+end
 Checkbox("Crisper CMAA2", "CMAA2ExtraSharpness",
     "With CMAA2 anti-aliasing, keep text and edges crisper at the cost of slightly less smoothing.")
 
