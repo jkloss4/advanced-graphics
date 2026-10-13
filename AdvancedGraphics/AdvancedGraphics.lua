@@ -144,21 +144,57 @@ Checkbox("Crisper CMAA2", "CMAA2ExtraSharpness",
 Section("World Detail", "groundEffectDensity", "weatherDensity", "doodadLodScale")
 Slider("Ground Clutter Density", "groundEffectDensity", 16, 256, 8, Plain,
     "How thick grass and small ground clutter are. The menu's Ground Clutter setting changes this too.")
-Slider("Ground Clutter Distance", "groundEffectDist", 40, 400, 5, Yards,
+Slider("Ground Clutter Distance", "groundEffectDist", 40, 500, 5, Yards,
     "How far out grass and ground clutter are drawn.")
+Slider("Ground Clutter Fade", "groundEffectFade", 0, 600, 10, Yards,
+    "How gradually grass and ground clutter fade out toward their distance limit. Higher is a softer fade.")
 Dropdown("Weather Density", "weatherDensity", {
     { label = "Off", value = 0 },
     { label = "Low", value = 1 },
     { label = "Medium", value = 2 },
     { label = "High", value = 3 },
 }, "How much rain and snow falls.")
+Dropdown("Cloud Detail", "SkyCloudLOD", {
+    { label = "Low", value = 0 },
+    { label = "Medium", value = 1 },
+    { label = "High", value = 2 },
+    { label = "Ultra", value = 3 },
+}, "Texture resolution of the clouds in the sky.")
 Slider("Object Detail Distance", "doodadLodScale", 50, 200, 5, function(v) return v .. "%" end,
     "How far out objects (trees, rocks, props) keep full detail before switching to simpler models.")
-Slider("Object Fade Distance", "lodObjectFadeScale", 50, 200, 5, function(v) return v .. "%" end,
+Slider("Object Fade Distance", "lodObjectFadeScale", 50, 300, 5, function(v) return v .. "%" end,
     "How far out small objects fade out.")
 Checkbox("Footprints", "showfootprintparticles", "Footprint effects as you walk.")
 Checkbox("Soft Edges", "DepthBasedOpacity",
     "Effects like fog and spell clouds fade softly where they meet surfaces instead of cutting off sharply.")
+
+---------------------------------------------------------------------------
+-- Distance & Detail: how far things keep full detail. The menu's View Distance and Environment Detail set several
+-- of these too, so moving those later replaces them.
+---------------------------------------------------------------------------
+Section("Distance & Detail", "terrainLodDist", "wmoLodDist", "entityLodDist", "horizonStart", "lodObjectCullSize",
+    "componentCompress")
+Slider("Terrain Detail Distance", "terrainLodDist", 200, 2000, 50, Yards,
+    "How far out the ground keeps full detail before switching to a simpler version.")
+Slider("Building Detail Distance", "wmoLodDist", 100, 2000, 50, Yards,
+    "How far out buildings keep full detail before switching to simpler models.")
+Slider("Character Detail Distance", "entityLodDist", 5, 1000, 5, Yards,
+    "How far out characters and creatures keep full detail before switching to simpler models.")
+Slider("Distant Landscape Start", "horizonStart", 400, 24000, 200, Yards,
+    "Where the low-detail distant landscape begins. Further out keeps more of the view at full detail.")
+Slider("Small Object Culling", "lodObjectCullSize", 1, 30, 1, Plain,
+    "How small an object can be before it's left out in the distance. Lower keeps more small objects.")
+Slider("Smallest Object Size", "lodObjectMinSize", 0, 40, 1, Plain,
+    "Objects smaller than this are never drawn far away. 0 draws them all.")
+-- On is the setting at 0 (uncompressed), so the box is the opposite of the setting
+if Exists("componentCompress") then
+    used.componentCompress = true
+    page:Checkbox("Full-Quality Character Textures",
+        function() return not On("componentCompress") end,
+        function(value) C_CVar.SetCVar("componentCompress", value and "0" or "1") end,
+        "Keep character textures (armor, skin) uncompressed, for sharper detail. Uses more video memory. Shows on "
+            .. "characters as they're loaded again, e.g. after a reload.")
+end
 
 ---------------------------------------------------------------------------
 -- Screen Effects
