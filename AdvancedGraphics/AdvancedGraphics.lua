@@ -45,33 +45,46 @@ local function Section(title, ...)
     end
 end
 
--- The tooltip, followed in gray by the console command for the setting at its current value (e.g. "/console
--- HDROutput 1"), to set it from chat or a macro
-local function WithCommand(tooltip, cvar)
+-- The tooltip, then the game's default for the setting (as describe turns it into the control's wording), then in
+-- gray the console command for the setting at its current value (e.g. "/console HDROutput 1"), to set it from chat
+-- or a macro
+local function WithCommand(tooltip, cvar, describe)
+    local default = describe(C_CVar.GetCVarDefault(cvar))
     return function()
-        return tooltip .. "\n\n|cff808080/console " .. cvar .. " " .. tostring(C_CVar.GetCVar(cvar)) .. "|r"
+        return tooltip .. "\n\nDefault: " .. default
+            .. "\n\n|cff808080/console " .. cvar .. " " .. tostring(C_CVar.GetCVar(cvar)) .. "|r"
     end
+end
+
+local function OnOff(value)
+    return (tonumber(value) or 0) ~= 0 and "On" or "Off"
 end
 
 local function Checkbox(label, cvar, tooltip, opts)
     if not Exists(cvar) then return end
     used[cvar] = true
     page:Checkbox(label, function() return On(cvar) end, function(value) C_CVar.SetCVar(cvar, value and "1" or "0") end,
-        WithCommand(tooltip, cvar), opts)
+        WithCommand(tooltip, cvar, OnOff), opts)
 end
 
 local function Slider(label, cvar, minValue, maxValue, step, format, tooltip, opts)
     if not Exists(cvar) then return end
     used[cvar] = true
     page:Slider(label, minValue, maxValue, step, function() return GetNumber(cvar) end,
-        function(value) SetNumber(cvar, value) end, format, WithCommand(tooltip, cvar), opts)
+        function(value) SetNumber(cvar, value) end, format,
+        WithCommand(tooltip, cvar, function(value) return format(tonumber(value) or 0) end), opts)
 end
 
 local function Dropdown(label, cvar, options, tooltip, opts)
     if not Exists(cvar) then return end
     used[cvar] = true
     page:Dropdown(label, options, function() return GetNumber(cvar) end, function(value) SetNumber(cvar, value) end,
-        WithCommand(tooltip, cvar), opts)
+        WithCommand(tooltip, cvar, function(value)
+            for _, option in ipairs(options) do
+                if option.value == tonumber(value) then return option.label end
+            end
+            return tostring(value)
+        end), opts)
 end
 
 local function Nits(value) return ("%d nits"):format(value) end
@@ -141,7 +154,8 @@ if Exists("ResampleSharpness") then
         function(value) SetNumber("ResampleSharpness", math.floor((2 - value) * 10 + 0.5) / 10) end,
         function(value) return ("%.1f"):format(2 - value) end,
         WithCommand("How much sharpening is applied, the same setting and layout as the menu's Sharpness: further "
-            .. "right is sharper.", "ResampleSharpness"), OnlyWith("ResampleAlwaysSharpen"))
+            .. "right is sharper.", "ResampleSharpness",
+            function(value) return ("%.1f"):format(tonumber(value) or 0) end), OnlyWith("ResampleAlwaysSharpen"))
 end
 Checkbox("Crisper CMAA2", "CMAA2ExtraSharpness",
     "With CMAA2 anti-aliasing, keep text and edges crisper at the cost of slightly less smoothing.")
@@ -205,7 +219,7 @@ if Exists("componentCompress") then
         function(value) C_CVar.SetCVar("componentCompress", value and "0" or "1") end,
         WithCommand("Keep character textures (armor, skin) uncompressed, for sharper detail. Uses more video memory. "
             .. "Shows on characters as they're loaded again, e.g. after a reload. (The console setting is 0 when this "
-            .. "is on.)", "componentCompress"))
+            .. "is on.)", "componentCompress", function(value) return OnOff(value) == "On" and "Off" or "On" end))
 end
 
 ---------------------------------------------------------------------------
