@@ -26,8 +26,8 @@ Slash commands: `/advancedgraphics` or `/advgfx` (opens the options).
 ## Install
 
 Download `AdvancedGraphics-<version>.zip` from the [latest release](../../releases/latest) and extract the
-`AdvancedGraphics` folder into `World of Warcraft\_classic_beta_\Interface\AddOns\` for WoW: Forever (`_retail_`
-instead of `_classic_beta_` for retail).
+`AdvancedGraphics` folder into `World of Warcraft\_forever_\Interface\AddOns\` for WoW: Forever (`_retail_`
+instead of `_forever_` for retail).
 
 An addon manager that installs from GitHub releases (e.g. WowUp: *Install from URL* with this repo's URL) can also
 install and update it, **but only if the repository is public**.
