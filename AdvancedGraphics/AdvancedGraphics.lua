@@ -114,6 +114,14 @@ Checkbox("HDR Output", "HDROutput",
 Slider("Highlight Strength", "HDRFactor", 1, 10, 0.05, Times,
     "How far above normal brightness highlights (sun, fire, spell effects) can go. It's capped at your monitor's peak "
         .. "brightness.", OnlyWith("HDROutput"))
+Checkbox("Set Brightness", "useHDRBrightness",
+    "Use the brightness below for normal (non-highlight) content instead of the detected one. Raise it if the game "
+        .. "looks dim in HDR.", OnlyWith("HDROutput"))
+Slider("Brightness", "HDRBrightness", 80, 2000, 1, Nits,
+    "Brightness of normal content (paper white), in nits. 203 is the standard level.", {
+        indent = 2,
+        enabled = function() return On("HDROutput") and On("useHDRBrightness") end,
+    })
 Checkbox("Set Peak Brightness", "useHDRPeakBrightness",
     "Use the peak brightness below instead of the one detected from your monitor. Helps when highlights clip or look "
         .. "dim.", OnlyWith("HDROutput"))
@@ -121,14 +129,6 @@ Slider("Peak Brightness", "HDRPeakBrightness", 300, 2000, 50, Nits,
     "Your monitor's real peak brightness, in nits.", {
         indent = 2,
         enabled = function() return On("HDROutput") and On("useHDRPeakBrightness") end,
-    })
-Checkbox("Set Paper White", "useHDRBrightness",
-    "Use the brightness below for normal (non-highlight) content instead of the detected one. Raise it if the game "
-        .. "looks dim in HDR.", OnlyWith("HDROutput"))
-Slider("Paper White", "HDRBrightness", 80, 2000, 1, Nits,
-    "Brightness of normal content, in nits. 203 is the standard level.", {
-        indent = 2,
-        enabled = function() return On("HDROutput") and On("useHDRBrightness") end,
     })
 
 ---------------------------------------------------------------------------

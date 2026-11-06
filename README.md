@@ -8,7 +8,7 @@ HDR output and its settings, and Linear Lighting / Bloom, are WoW: Forever only.
 
 ## Settings
 
-- **HDR**: render format (8-bit, 10-bit, 16-bit float or 32-bit float; both clients), and on WoW: Forever HDR output, highlight strength, and overrides for peak brightness and paper white (nits).
+- **HDR**: render format (8-bit, 10-bit, 16-bit float or 32-bit float; both clients), and on WoW: Forever HDR output, highlight strength, and overrides for brightness (paper white) and peak brightness (nits).
 - **Lighting**: Linear Lighting and Bloom (WoW: Forever), surface shine, light draw distance.
 - **Sharpening**: sharpen even without FSR upscaling, sharpness amount, crisper CMAA2 anti-aliasing.
 - **World Detail**: ground clutter density, distance and fade, weather density, cloud detail, object detail and fade
