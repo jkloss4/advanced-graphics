@@ -4,7 +4,7 @@ Graphics settings for World of Warcraft that aren't in the game's options menus,
 (Options → AddOns → Advanced Graphics) in Blizzard's settings style.
 
 Retail (Interface 120100) and WoW: Forever (Interface 16001). Settings a client doesn't have are left off the page:
-the HDR section and Linear Lighting / Bloom are WoW: Forever only.
+HDR output and its settings, and Linear Lighting / Bloom, are WoW: Forever only.
 
 ## Settings
 
