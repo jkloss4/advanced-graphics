@@ -98,9 +98,16 @@ local function OnlyWith(cvar)
 end
 
 ---------------------------------------------------------------------------
--- HDR (WoW: Forever)
+-- HDR (WoW: Forever; Render Format is on both clients)
 ---------------------------------------------------------------------------
-Section("HDR", "HDROutput")
+Section("HDR", "HDROutput", "RenderFormat")
+Dropdown("Render Format", "RenderFormat", {
+    { label = "8-bit (BGRA8)", value = 0 },
+    { label = "10-bit (A2BGR10)", value = 1 },
+    { label = "16-bit Float (RGBA16F)", value = 2 },
+    { label = "32-bit Float (RGBA32F)", value = 3 },
+}, "The precision the game renders at. Higher gives smoother gradients (less banding in skies and fog); 32-bit "
+    .. "uses the most video memory and bandwidth. If nothing changes, restart the game.")
 Checkbox("HDR Output", "HDROutput",
     "Render in HDR. Needs Windows HDR turned on, a monitor that supports it, and Linear Lighting. If nothing changes, "
         .. "restart the game.")
