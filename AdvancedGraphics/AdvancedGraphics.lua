@@ -111,7 +111,7 @@ Dropdown("Render Format", "RenderFormat", {
 Checkbox("HDR Output", "HDROutput",
     "Render in HDR. Needs Windows HDR turned on, a monitor that supports it, and Linear Lighting. If nothing changes, "
         .. "restart the game.")
-Slider("Highlight Strength", "HDRFactor", 1, 5, 0.05, Times,
+Slider("Highlight Strength", "HDRFactor", 1, 10, 0.05, Times,
     "How far above normal brightness highlights (sun, fire, spell effects) can go. It's capped at your monitor's peak "
         .. "brightness.", OnlyWith("HDROutput"))
 Checkbox("Set Peak Brightness", "useHDRPeakBrightness",
@@ -125,7 +125,7 @@ Slider("Peak Brightness", "HDRPeakBrightness", 300, 2000, 50, Nits,
 Checkbox("Set Paper White", "useHDRBrightness",
     "Use the brightness below for normal (non-highlight) content instead of the detected one. Raise it if the game "
         .. "looks dim in HDR.", OnlyWith("HDROutput"))
-Slider("Paper White", "HDRBrightness", 80, 500, 1, Nits,
+Slider("Paper White", "HDRBrightness", 80, 2000, 1, Nits,
     "Brightness of normal content, in nits. 203 is the standard level.", {
         indent = 2,
         enabled = function() return On("HDROutput") and On("useHDRBrightness") end,
